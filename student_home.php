@@ -34,7 +34,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="index.php"><img src="img/core-img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -55,9 +55,9 @@
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                            <a class="dropdown-item" href="student_home.html">Home</a>
+                                            <a class="dropdown-item" href="student_home.php">Home</a>
                                             <a class="dropdown-item" href="#">Profile</a>
-                                            <a class="dropdown-item" href="index.html">Logout</a>
+                                            <a class="dropdown-item" href="index.php">Logout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,12 +88,10 @@
                         <img src="img/bg-img/c1.jpg" alt="">
                         <!-- Course Content -->
                         <div class="course-content">
-                            <a href="student_course.html"><h4>Subject #1</h4></a>
+                            <a href="student_course.php"><h4>Subject #1</h4></a>
                             <div class="meta d-flex align-items-center">
                                 <h7><b>Subject Instructor</b></h7>
                             </div>
-                             <!-- Course Content -->
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis</p>
                         </div>
                     </div>
                 </div>
@@ -102,26 +100,22 @@
                         <img src="img/bg-img/c2.jpg" alt="">
                         <!-- Course Content -->
                         <div class="course-content">
-                            <a href="student_course.html"><h4>Subject #2</h4></a>
+                            <a href="student_course.php"><h4>Subject #2</h4></a>
                             <div class="meta d-flex align-items-center">
                                 <h7><b>Subject Instructor</b></h7>
                             </div>
-                             <!-- Course Content -->
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-student-subject mb-100 wow fadeInUp" data-wow-delay="750ms">
+                    <div class="single-student-subject mb-100 wow fadeInUp" data-wow-delay="500ms">
                         <img src="img/bg-img/c3.jpg" alt="">
                         <!-- Course Content -->
-                        <div class="student_course-content">
-                            <a href="course.html"><h4>Subject #3</h4></a>
+                        <div class="course-content">
+                            <a href="student_course.php"><h4>Subject #2</h4></a>
                             <div class="meta d-flex align-items-center">
                                 <h7><b>Subject Instructor</b></h7>
                             </div>
-                             <!-- Course Content -->
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis</p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +131,7 @@
                     <div class="col-12">
                         <!-- Footer Logo -->
                         <div class="footer-logo">
-                            <a href="index.html"><img src="img/core-img/logo2.png" alt=""></a>
+                            <a href="index.php"><img src="img/core-img/logo2.png" alt=""></a>
                         </div>
                         <!-- Copywrite -->
                         <p><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

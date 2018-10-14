@@ -51,7 +51,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="index.php"><img src="img/core-img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -69,23 +69,23 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="courses.html">Courses</a></li>
-                                        <li><a href="single-course.html">Single Courses</a></li>
-                                        <li><a href="instructors.html">Instructors</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-details.html">Single Blog</a></li>
-                                        <li><a href="regular-page.html">Regular Page</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="index.php">Home</a></li>
+                                        <li><a href="courses.php">Courses</a></li>
+                                        <li><a href="single-course.php">Single Courses</a></li>
+                                        <li><a href="instructors.php">Instructors</a></li>
+                                        <li><a href="blog.php">Blog</a></li>
+                                        <li><a href="blog-details.php">Single Blog</a></li>
+                                        <li><a href="regular-page.php">Regular Page</a></li>
+                                        <li><a href="contact.php">Contact</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="courses.html">Courses</a></li>
-                                <li><a href="instructors.html">Instructors</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="courses.php">Courses</a></li>
+                                <li><a href="instructors.php">Instructors</a></li>
+                                <li><a href="blog.php">Blog</a></li>
+                                <li><a href="contact.php">Contact</a></li>
                             </ul>
 
                             <!-- Search Button -->
@@ -99,7 +99,7 @@
                             <!-- Register / Login -->
                             <div class="register-login-area">
                                 <a href="#" class="btn">Register</a>
-                                <a href="index-login.html" class="btn active">Login</a>
+                                <a href="index-login.php" class="btn active">Login</a>
                             </div>
 
                         </div>
@@ -569,23 +569,6 @@
                 </div>
 
                 <!-- Single Blog Area -->
-                <div class="col-12 col-md-6">
-                    <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="500ms">
-                        <img src="img/blog-img/2.jpg" alt="">
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <a href="#" class="blog-headline">
-                                <h4>English Grammer</h4>
-                            </a>
-                            <div class="meta d-flex align-items-center">
-                                <a href="#">Sarah Parker</a>
-                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
-                                <a href="#">Art &amp; Design</a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -600,7 +583,7 @@
                     <div class="col-12">
                         <!-- Footer Logo -->
                         <div class="footer-logo">
-                            <a href="index.html"><img src="img/core-img/logo2.png" alt=""></a>
+                            <a href="index.php"><img src="img/core-img/logo2.png" alt=""></a>
                         </div>
                         <!-- Copywrite -->
                         <p><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -610,23 +593,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Footer Area -->
-        <div class="bottom-footer-area d-flex justify-content-between align-items-center">
-            <!-- Contact Info -->
-            <div class="contact-info">
-                <a href="#"><span>Phone:</span> +44 300 303 0266</a>
-                <a href="#"><span>Email:</span> info@clever.com</a>
-            </div>
-            <!-- Follow Us -->
-            <div class="follow-us">
-                <span>Follow us</span>
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </footer>
+       
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Script ##### -->

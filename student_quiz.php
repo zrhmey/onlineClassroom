@@ -36,7 +36,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="index.php"><img src="img/core-img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -54,14 +54,14 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="student_course.html">About</a></li>
+                                <li><a href="student_course.php">About</a></li>
                                 <li><a href="#">To-do</a>
                                     <ul class="dropdown">
-                                        <li><a href="student_quiz.html">Quizzes</a></li>
-                                        <li><a href="student_assignment.html">Assignments</a></li>
+                                        <li><a href="student_quiz.php">Quizzes</a></li>
+                                        <li><a href="student_assignment.php">Assignments</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="student_announcement.html">Announcements</a></li>
+                                <li><a href="student_announcement.php">Announcements</a></li>
                             </ul>
 
                             <div class="login-state d-flex align-items-center">
@@ -69,9 +69,9 @@
                                         <div class="dropdown">
                                             <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                                <a class="dropdown-item" href="student_home.html">Home</a>
+                                                <a class="dropdown-item" href="student_home.php">Home</a>
                                                 <a class="dropdown-item" href="#">Profile</a>
-                                                <a class="dropdown-item" href="index.html">Logout</a>
+                                                <a class="dropdown-item" href="index.php">Logout</a>
                                             </div>
                                         </div>
                                     </div>
@@ -93,9 +93,9 @@
         <!-- Breadcumb -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="student_home.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="student_course.html">Course</a></li>
-                <li class="breadcrumb-item"><a href="student_quiz.html">Quizzes</a></li>
+                <li class="breadcrumb-item"><a href="student_home.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="student_course.php">Course</a></li>
+                <li class="breadcrumb-item"><a href="student_quiz.php">Quizzes</a></li>
             </ol>
         </nav>
     </div>
@@ -214,7 +214,7 @@
                     <div class="col-12">
                         <!-- Footer Logo -->
                         <div class="footer-logo">
-                            <a href="index.html"><img src="img/core-img/logo2.png" alt=""></a>
+                            <a href="index.php"><img src="img/core-img/logo2.png" alt=""></a>
                         </div>
                         <!-- Copywrite -->
                         <p><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
