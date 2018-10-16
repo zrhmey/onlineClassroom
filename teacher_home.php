@@ -62,7 +62,7 @@
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                            <a class="dropdown-item" href="student_home.php">Home</a>
+                                            <a class="dropdown-item" href="teacher_home.php">Home</a>
                                             <a class="dropdown-item" href="#">Profile</a>
                                             <a class="dropdown-item" href="index.php">Logout</a>
                                         </div>
@@ -88,14 +88,12 @@
     <section>
         <div class="container">
             <div class="row">
-            </div>
-            <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-student-subject mb-100 wow fadeInUp" data-wow-delay="250ms">
                         <img src="img/bg-img/c1.jpg" alt="">
                         <!-- Course Content -->
                         <div class="course-content">
-                            <a href="student_course.php"><h4>Subject #1</h4></a>
+                            <a href="teacher_course.php"><h4>Subject #1</h4></a>
                             <div class="meta d-flex align-items-center">
                                 <h7><b>Subject Instructor</b></h7>
                             </div>
@@ -107,7 +105,7 @@
                         <img src="img/bg-img/c2.jpg" alt="">
                         <!-- Course Content -->
                         <div class="course-content">
-                            <a href="student_course.php"><h4>Subject #2</h4></a>
+                            <a href="teacher_course.php"><h4>Subject #2</h4></a>
                             <div class="meta d-flex align-items-center">
                                 <h7><b>Subject Instructor</b></h7>
                             </div>
@@ -119,7 +117,7 @@
                         <img src="img/bg-img/c3.jpg" alt="">
                         <!-- Course Content -->
                         <div class="course-content">
-                            <a href="student_course.php"><h4>Subject #3</h4></a>
+                            <a href="teacher_course.php"><h4>Subject #3</h4></a>
                             <div class="meta d-flex align-items-center">
                                 <h7><b>Subject Instructor</b></h7>
                             </div>
