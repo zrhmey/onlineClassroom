@@ -137,8 +137,8 @@
                                 </form>
                             </div>
                             <div class="sidebar-widget">
-                                <h4>Teacher Log In</h4>
-                                <form action="teacher_home.php" method="post">
+                                <h4>Student Log In</h4>
+                                <form action="student_home.php" method="post">
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
                                             <div class="form-group">
