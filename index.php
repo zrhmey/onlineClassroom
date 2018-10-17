@@ -46,8 +46,8 @@
                         <div class="classynav">
                             <!-- Register / Login -->
                             <div class="register-login-area">
-                                <a href="#register-form" class="btn">Register</a>
-                                <a href="#log-in-forms" class="btn active">Login</a>
+                                <a href="#forms" class="btn">Register</a>
+                                <a href="#forms" class="btn active">Login</a>
                             </div>
 
                         </div>
@@ -67,102 +67,126 @@
                     <!-- Hero Content -->
                     <div class="hero-content text-center">
                         <h2>Let's Study Together</h2>
+                        <a href="#forms" class="btn clever-btn">Get Started</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- ##### Hero Area End ##### -->
-    <section class="register-now section-padding-100-0 d-flex justify-content-between align-items-center" style="background-image: url(img/core-img/texture.png);">
-        <div class="container-fluid">
+    <div id="forms" class="single-course-content section-padding-100" style="background-image: url(img/core-img/texture.png);">
+        <div class="container">
             <div class="row">
-                <!-- Register Start -->
-                <div class="col-12 col-md-6">
-                    <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="250ms" style="background-image: url(img/core-img/texture.png);">
-                        <form action="#" method="post">
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="first_name" placeholder="First Name">
+                <div class="col-12 col-lg-8"> 
+                    <div class="course--content">
+                        <div class="clever-tabs-content">
+                            <div class="tab-content" id="myTabContent">
+                                <!-- Tab Text -->
+                                <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab--1">
+                                    <div class="clever-description">
+
+                                        <!-- About Course -->
+                                        <div class="about-course mb-30">
+                                            <h4>Create Account</h4>
+                                            <form action="/action_page.php">
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="first_name">First Name</label>
+                                                            <input type="text" class="form-control" id="first_name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="last_name">Last Name:</label>
+                                                            <input type="text" class="form-control" id="last_name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="username">Username:</label>
+                                                            <input type="text" class="form-control" id="username">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="pwd">Password:</label>
+                                                            <input type="password" class="form-control" id="pwd">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="email">Email Address:</label>
+                                                            <input type="email" class="form-control" id="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <label for="user_type">Register As:</label>
+                                                        <input type="radio" name="optradio" value="1">Teacher
+                                                        <input type="radio" name="optradio" value="0">Student
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="btn clever-btn w-100">Create Account</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="last_name" placeholder="Last Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="user_name" placeholder="userNameExample123">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="example@email.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="phone" placeholder="min of 6 characters">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn clever-btn w-100">Register</button>
                                     </div>
                                 </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="250ms" style="background-image: url(img/core-img/texture.png);">
-                        <div class="course-sidebar">
-                            <div class="sidebar-widget">
-                                <h4>Teacher Log In</h4>
-                                <form action="teacher_home.php" method="post">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="teacher_username" placeholder="username">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" id="teacher_password" placeholder="password">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn clever-btn w-100">Log In</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="sidebar-widget">
-                                <h4>Student Log In</h4>
-                                <form action="student_home.php" method="post">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="teacher_username" placeholder="username">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" id="teacher_password" placeholder="password">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn clever-btn w-100">Log In</button>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
-    
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="course-sidebar">
+                        <div class="sidebar-widget">
+                            <h4>Teacher's Login</h4>
+                            <form action="teacher_home.php" method="post">
+                                <div class="col-12 col-lg-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="teacher_username" placeholder="username">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-12">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="teacher_password" placeholder="password">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn clever-btn w-100">Log In</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sidebar-widget">
+                            <h4>Student's Login</h4>
+                            <form action="student_home.php" method="post">
+                                <div class="col-12 col-lg-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="teacher_username" placeholder="username">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-12">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="teacher_password" placeholder="password">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn clever-btn w-100">Log In</button>
+                                </div>
+                            </form>
+                        </div>   
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- ##### Register End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
