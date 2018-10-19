@@ -47,7 +47,7 @@
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
 
-        <!-- Top Header Area -->
+
         <!-- Navbar Area -->
         <div class="clever-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -73,30 +73,24 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="student_course.php">About</a></li>
-                                <li><a href="#">To-do</a>
-                                    <ul class="dropdown">
-                                        <li><a href="student_quiz.php">Quizzes</a></li>
-                                        <li><a href="student_assignment.php">Assignments</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="student_announcement.php">Announcements</a></li>
+                                <li><a href="teacher_home.php">Home</a></li>
                             </ul>
 
+                            <!-- Register / Login -->
                             <div class="login-state d-flex align-items-center">
-                                    <div class="user-name mr-30">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                                <a class="dropdown-item" href="student_home.php">Home</a>
-                                                <a class="dropdown-item" href="#">Profile</a>
-                                                <a class="dropdown-item" href="index.php">Logout</a>
-                                            </div>
+                                <div class="user-name mr-30">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
+                                            <a class="dropdown-item" href="teacher_home.php">Home</a>
+                                            <a class="dropdown-item" href="#">Profile</a>
+                                            <a class="dropdown-item" href="index.php">Logout</a>
                                         </div>
                                     </div>
-                                    <div class="userthumb">
-                                        <img src="img/bg-img/t1.png" alt="">
-                                    </div>
+                                </div>
+                                <div class="userthumb">
+                                    <img src="img/bg-img/t1.png" alt="">
+                                </div>
                             </div>
                         </div>
                         <!-- Nav End -->
