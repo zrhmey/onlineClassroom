@@ -416,6 +416,7 @@
                                             <p>Sed elementum lacus a risus luctus suscipit. Aenean sollicitudin sapien neque, in fermentum lorem dignissim a. Nullam eu mattis quam. Donec porttitor nunc a diam molestie blandit. Maecenas quis ultrices</p>
                                         </div>
                                     </div>
+                                    <a href="teacher_quiz.php" class="btn btn-primary">Create New Quiz</a>
                                 </div>
                             </div>
                         </div>
@@ -425,7 +426,7 @@
                 <div class="col-12 col-lg-4">
                     <div class="course-sidebar">
                         <!-- Class Record -->
-                        <a href="#" class="btn clever-btn mb-30 w-100">Class Record</a>
+                        <a href="classrecord.php" class="btn clever-btn mb-30 w-100">Class Record</a>
 
                         <!-- Widget -->
                         <div class="sidebar-widget">
