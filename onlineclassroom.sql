@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2018 at 04:19 PM
+-- Generation Time: Oct 19, 2018 at 07:38 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.15
 
@@ -209,6 +209,34 @@ CREATE TABLE `subject_quiz` (
   `quiz_number` int(100) NOT NULL,
   `date` date NOT NULL,
   `title` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submits_assignment`
+--
+
+CREATE TABLE `submits_assignment` (
+  `student_id` int(100) NOT NULL,
+  `subject_id` int(100) NOT NULL,
+  `assignment_number` int(100) NOT NULL,
+  `date_submitted` datetime(6) NOT NULL,
+  `content` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submits_quiz`
+--
+
+CREATE TABLE `submits_quiz` (
+  `student_id` int(100) NOT NULL,
+  `subject_id` int(100) NOT NULL,
+  `quiz_number` int(100) NOT NULL,
+  `date_submitted` datetime(6) NOT NULL,
+  `content` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
