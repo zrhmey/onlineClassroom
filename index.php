@@ -1,3 +1,127 @@
+<?php
+    include('db_connection.php');
+
+    $error = '<br>';
+    $error2 = '<br>';
+
+    //for creating account
+    if( isset($_POST['register']) ) {
+
+        $first_name = ($_POST['first_name']);
+        $last_name = ($_POST['last_name']);
+        $username = ($_POST['username']);
+        $email = ($_POST['email']);
+        $pwd = ($_POST['pwd']);
+        $retype_pwd = ($_POST['retype_pwd']);
+        $type = ($_POST['type']);
+        
+
+        //checks if the input fields are empty
+        if (empty($first_name)|empty($last_name)|empty($username)|empty($email)|empty($pwd)|empty($retype_pwd)|empty($type) ) {
+            $error2= 'Please fillup all the fields below';
+        }
+
+        //checks if the password matched
+        if($_POST['pwd']!=$_POST['retype_pwd']){
+            $error2= 'Password does not match';
+        }
+
+
+        //teacher registration
+        if ($type != 0){
+            $checkUserQuery_teacher = "SELECT username from teacher  WHERE username = '$username'";
+            $dupUserRes_teacher = mysqli_query($dbconn,$checkUserQuery_teacher);
+            $affected_rows_teacher = mysqli_num_rows($dupUserRes_teacher);
+            if ($affected_rows_teacher != 0) {
+                $error2="username already taken";
+            }
+            else{
+                $query= "INSERT into teacher(first_name, last_name, username, email_address, password) VALUES('$first_name','$last_name', '$username', '$email', sha1($pwd) )";
+                if($result = mysqli_query($dbconn, $query)){
+                    $_SESSION['username'] = $username;
+                    header("Location: teacher_home.php");
+                }
+            }  
+        }
+
+        //student_registration
+        if ($type != 1){
+            $checkUserQuery_student = "SELECT username from student  WHERE username = '$username'";
+            $dupUserRes_student = mysqli_query($dbconn,$checkUserQuery_student);
+            $affected_rows_student = mysqli_num_rows($dupUserRes_student);
+            if ($affected_rows_student != 0) {
+                $error2="username already taken";
+            }
+            else{
+                $query_student= "INSERT into student(first_name, last_name, username, email_address, password) VALUES('$first_name','$last_name', '$username', '$email', sha1($pwd) )";
+                if($result2 = mysqli_query($dbconn, $query_student)){
+                    $_SESSION['username'] = $username;
+                    header("Location: student_home.php");
+                }
+            }
+        }     
+    }
+    //create account end
+
+    //for teacher login
+
+    if(isset($_POST['login'])){
+            $username_log = $_POST['username_log'];    
+            $password_log = $_POST['password_log']; 
+
+            if(empty($username_log )){
+                $error = 'Please enter your username!!!.';
+            }
+            if(empty($password_log)){
+                $error = 'Please enter your password!!!.';
+            }
+            if((empty($username_log )) && (empty($password_log))){
+                $error = 'Please enter your username and password.';
+            }
+            else{
+                $lquery = "SELECT * FROM teacher WHERE username = '$username_log' and password = sha1($password_log)";
+                $lresult = mysqli_query($dbconn, $lquery);
+                $row = mysqli_num_rows($lresult);
+                if($row == 1){                  
+                        $_SESSION['username'] = $username_log;
+                        header("Location:hello.php");
+                }
+                else{
+                    $error = 'Account not found!';
+                }
+            }
+        }
+
+    if(isset($_POST['login2'])){
+            $username_log2 = $_POST['username_log2'];    
+            $password_log2 = $_POST['password_log2']; 
+
+            if(empty($username_log2 )){
+                $error = 'Please enter your username!!!.';
+            }
+            if(empty($password_log2)){
+                $error = 'Please enter your password!!!.';
+            }
+            if((empty($username_log2 )) && (empty($password_log2))){
+                $error = 'Please enter your username and password.';
+            }
+            else{
+                $lquery = "SELECT * FROM student WHERE username = '$username_log2' and password = sha1($password_log2)";
+                $lresult = mysqli_query($dbconn, $lquery);
+                $row = mysqli_num_rows($lresult);
+                if($row == 1){                  
+                        $_SESSION['username'] = $username_log2;
+                        header("Location:hello.php");
+
+                }
+                else{
+                    $error = 'Account not found!';
+                }
+            }
+        }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +133,7 @@
     <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Clever - Education &amp; Courses Template | Home</title>
+    <title>Online Classroom</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -88,18 +212,19 @@
                                         <!-- About Course -->
                                         <div class="about-course mb-30">
                                             <h4>Create Account</h4>
-                                            <form action="/action_page.php">
+                                            <h7 class="text-danger"><?php echo $error2 ?></h7>
+                                            <form method="post">
                                                 <div class="row">
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="first_name">First Name</label>
-                                                            <input type="text" class="form-control" id="first_name">
+                                                            <input type="text" class="form-control" name="first_name" id="first_name">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="last_name">Last Name:</label>
-                                                            <input type="text" class="form-control" id="last_name">
+                                                            <input type="text" class="form-control" name="last_name" id="last_name">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -107,33 +232,41 @@
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="username">Username:</label>
-                                                            <input type="text" class="form-control" id="username">
+                                                            <input type="text" class="form-control" name="username" id="username">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
-                                                            <label for="pwd">Password:</label>
-                                                            <input type="password" class="form-control" id="pwd">
+                                                            <label for="email">Email Address:</label>
+                                                            <input type="email" class="form-control" name="email" id="email">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
-                                                            <label for="email">Email Address:</label>
-                                                            <input type="email" class="form-control" id="email">
+                                                            <label for="pwd">Password:</label>
+                                                            <input type="password" class="form-control" name="pwd" id="pwd">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="pwd">Password:</label>
+                                                            <input type="password" class="form-control" name="retype_pwd" id="retype_pwd">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12 col-md-6">
                                                         <label for="user_type">Register As:</label>
-                                                        <input type="radio" name="optradio" value="1">Teacher
-                                                        <input type="radio" name="optradio" value="0">Student
+                                                        <select name="type">
+                                                            <option value="1">Teacher</option>
+                                                            <option value="0">Student</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button class="btn clever-btn w-100">Create Account</button>
+                                                    <button class="btn clever-btn w-100" name="register">Create Account</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -148,19 +281,22 @@
                     <div class="course-sidebar">
                         <div class="sidebar-widget">
                             <h4>Teacher's Login</h4>
-                            <form action="teacher_home.php" method="post">
+                            <h7 class="text-danger">
+                                <?php echo $error;?>
+                            </h7>
+                            <form method="post">
                                 <div class="col-12 col-lg-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="teacher_username" placeholder="username">
+                                        <input type="text" class="form-control" id="teacher_username" placeholder="username" name="username_log">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-12">
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="teacher_password" placeholder="password">
+                                        <input type="password" class="form-control" id="teacher_password" placeholder="password" name="password_log">
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn clever-btn w-100">Log In</button>
+                                    <button class="btn clever-btn w-100" name="login">Log In</button>
                                 </div>
                             </form>
                         </div>
