@@ -1,9 +1,31 @@
-
 <?php
+include('db_connection.php');
 
- include('db_connection.php');
+$error = "<br>";
 
- ?>
+ if( isset($_POST['add_subject']) ) {
+    $subject_title= ($_POST['subject_title']);
+    $subject_description= ($_POST['subject_description']);
+    $subject_about= ($_POST['subject_about']);
+    $teacher_id = "1";
+
+    
+    if (empty($subject_title)|empty($subject_description)|empty($subject_about)) {
+            $error= 'Please fillup all the fields below';
+        }
+
+    else{
+        $add_subject_query = "INSERT into subject(course_title, course_description, course_about, teacher_id) VALUES('$subject_title','$subject_description', '$subject_about', '$teacher_id')";
+        if ($result = mysqli_query($dbconn, $add_subject_query)) {
+             header("Location: teacher_course.php");
+        }
+    }
+
+}
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,38 +114,41 @@
 
     <!-- ##### List of Subjects ##### -->
     
-    <section>
+    <div class="announcement-page-area section-padding-100">
         <div class="container">
-            <a class="btn btn-primary" href="add_subject.php">Create Subject</a>
-            <div class="free-space">
-                <br/>
+            <div class="col-12">
+                <div class="section-heading">
+                    <h3>Add Subject</h3>
+                </div>
             </div>
-            <div class="row">
+            <div class="page-content">
+                <h7 class="text text-danger"><?php echo $error;?></h7>
+               <form method="POST">
+                   <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Subject Title</span>
+                        </div>
+                        <input type="text" name="subject_title" class="form-control" placeholder="E.g CMSC 56" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
 
-                <?php 
-                    $subject_list_query= "SELECT subject_id, course_title, course_description FROM `subject` WHERE teacher_id = 1";
-                    $connect_to_db = mysqli_query($dbconn,$subject_list_query);
-                    $affected = mysqli_num_rows($connect_to_db);
-                            
-                    if ($affected != 0) {
-                        while ($row = mysqli_fetch_row($connect_to_db)) {?>
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-student-subject mb-100 wow fadeInUp" data-wow-delay="250ms">
-                                    <img src="img/bg-img/c1.jpg" alt="">
-                                    <!-- Course Content -->
-                                    <div class="course-content">
-                                        <a href="teacher_course.php"><h4><?php echo $row[1]?></h4></a>
-                                        <div class="meta d-flex align-items-center">
-                                            <h7><b><?php echo $row[2]?></b></h7>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } ?>
-                    <?php } ?>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">Subject Description</span>
+                        </div>
+                        <input type="text" name="subject_description" class="form-control" placeholder="Discrete Mathematics" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">About</span>
+                        </div>
+                        <textarea name="subject_about" class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+                    <br/>
+                    <button name="add_subject" class="btn btn-primary">Add Subject</button> 
+               </form>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
