@@ -109,14 +109,16 @@
                         while ($row = mysqli_fetch_row($connect_to_db)) {?>
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-student-subject mb-100 wow fadeInUp" data-wow-delay="250ms">
-                                    <img src="img/bg-img/c1.jpg" alt="">
+                                    <form method="post">
+                                       <img src="img/bg-img/c1.jpg" alt="">
                                     <!-- Course Content -->
-                                    <div class="course-content">
-                                        <a href="teacher_course.php"><h4><?php echo $row[1]?></h4></a>
-                                        <div class="meta d-flex align-items-center">
-                                            <h7><b><?php echo $row[2]?></b></h7>
-                                        </div>
-                                    </div>
+                                        <div class="course-content">
+                                            <?php echo "<a href='teacher_course.php?subject_id=".$row[0]."'><h4>$row[1]</h4></a>"; ?>
+                                            <div class="meta d-flex align-items-center">
+                                                <h7><b><?php echo $row[2]?></b></h7>
+                                            </div>
+                                        </div> 
+                                    </form>
                                 </div>
                             </div>
                         <?php } ?>

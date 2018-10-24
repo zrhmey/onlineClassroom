@@ -1,3 +1,29 @@
+<?php
+include("db_connection.php");
+
+
+ 
+$error = "<br>";
+if(isset($_POST['update_about'])){
+    $new_about = ($_POST['new_about']);
+    $update_query = "UPDATE subject SET course_about = '$new_about' WHERE subject_id = '1'";
+    if ($update_connect = mysqli_query($dbconn, $update_query)) {
+        header("Location: teacher_course.php");
+    }
+
+}
+
+if (isset($_POST['add_announcement'])) {
+    $announcement_number = ($_POST['announcement_number']);
+    $announcement_title = ($_POST['announcement_title']);
+    $announcement_content = ($_POST['announcement_content']);
+
+    $add_query = "INSERT INTO subject_announcement(subject_id, announcement_number, title, date, content) VALUES('1', '1','$announcement_title', CURDATE(), '$announcement_content')";
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,23 +120,29 @@
     </div>
     <!-- ##### Breadcumb Area End ##### -->
 
-    <!-- ##### Single Course Intro Start ##### -->
    <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(img/bg-img/bg1.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <!-- Hero Content -->
                     <div class="hero-content text-center">
-                        <!-- ##### Example: Management System ##### -->
-                        <h2>Course Description</h2>
-                        <!-- ##### Example: CMSC 152 ##### -->
-                        <h3>Course Title</h3>
+                        <?php
+                            $course_query = "SELECT course_title, course_description, course_about from subject WHERE subject_id = '1' ";
+                            $query_connect = mysqli_query($dbconn, $course_query);
+                            $row = mysqli_fetch_assoc($query_connect);
+                                
+                            $course_title = $row['course_title'];
+                            $course_description = $row['course_description'];
+                            $course_about = $row['course_about'];
+                       
+                        ?>
+                        <h2><?php echo $course_description;?></h2>
+                        <h3><?php echo $course_title;?></h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Single Course Intro End ##### -->
 
     <!-- ##### Courses Content Start ##### -->
     <div class="single-course-content section-padding-100">
@@ -138,84 +170,33 @@
                             </ul>
 
                             <div class="tab-content" id="myTabContent">
-                                <!-- Tab Text -->
+                                <!-- Tab Text About Class-->
                                 <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab--1">
                                     <div class="clever-description">
 
                                         <!-- About Course -->
                                         <div class="about-course mb-30">
                                             <h6>About this course</h6>
-                                            <p>Sed elementum lacus a risus luctus suscipit. Aenean sollicitudin sapien neque, in fermentum lorem dignissim a. Nullam eu mattis quam. Donec porttitor nunc a diam molestie blandit. Maecenas quis ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam eget vehicula lorem, vitae porta nisi. Ut vel quam erat. Ut vitae erat tincidunt, tristique mi ac, pharetra dolor. In et suscipit ex. Pellentesque aliquet velit tortor, eget placerat mi scelerisque a. Aliquam eu dui efficitur purus posuere viverra. Proin ut elit mollis, euismod diam et, fermentum enim.</p>
-                                            <button class="btn btn-info">Edit</button>
+                                            <p><?php echo $course_about; ?></p>
+                                            <button class="btn btn-info" data-toggle="modal" data-target="#update-about-modal">Edit</button>
                                         </div>
 
-                                        <!-- All Instructors -->
+                                        <!-- All Learning Materials -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-modal">Add Learning Materials</button>
                                         <div class="all-instructors mb-30">
                                             <h6>Learning Materials</h6>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-modal">Add</button>
-
                                             <div class="row">
-                                                <!-- Single Instructor -->
                                                 <div class="col-lg-6">
                                                     <div class="single-learning-materials mb-50 wow fadeInUp" data-wow-delay="500ms">
-                                                        <!-- Events Thumb -->
                                                         <div class="events-thumb">
                                                             <img src="img/document.png" alt="">
                                                             <h6 class="lecture-number">Lecture 2</h6>
                                                             <h4 class="lecture-title">Lecture No.2 Topic</h4>
                                                         </div>
-                                                        <!-- To Download -->
                                                         <div class="open-save d-flex justify-content-between">
                                                             <div class="extra-space">
                                                                 <span></span>
                                                             </div>
-                                                            <!-- <a class="btn btn-danger" href="#">Delete</a> -->
-                                                            <div class="save-btn">
-                                                                <a class="delete" href="#">Delete</a>
-                                                                <a href="#">Save</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Instructor -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-learning-materials mb-50 wow fadeInUp" data-wow-delay="500ms">
-                                                        <!-- Events Thumb -->
-                                                        <div class="events-thumb">
-                                                            <img src="img/document.png" alt="">
-                                                            <h6 class="lecture-number">Lecture 2</h6>
-                                                            <h4 class="lecture-title">Lecture No.2 Topic</h4>
-                                                        </div>
-                                                        <!-- To Download -->
-                                                        <div class="open-save d-flex justify-content-between">
-                                                            <div class="extra-space">
-                                                                <span></span>
-                                                            </div>
-                                                            <!-- <a class="btn btn-danger" href="#">Delete</a> -->
-                                                            <div class="save-btn">
-                                                                <a class="delete" href="#">Delete</a>
-                                                                <a href="#">Save</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Instructor -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-learning-materials mb-50 wow fadeInUp" data-wow-delay="500ms">
-                                                        <!-- Events Thumb -->
-                                                        <div class="events-thumb">
-                                                            <img src="img/document.png" alt="">
-                                                            <h6 class="lecture-number">Lecture 2</h6>
-                                                            <h4 class="lecture-title">Lecture No.2 Topic</h4>
-                                                        </div>
-                                                        <!-- To Download -->
-                                                        <div class="open-save d-flex justify-content-between">
-                                                            <div class="extra-space">
-                                                                <span></span>
-                                                            </div>
-                                                            <!-- <a class="btn btn-danger" href="#">Delete</a> -->
                                                             <div class="save-btn">
                                                                 <a class="delete" href="#">Delete</a>
                                                                 <a href="#">Save</a>
@@ -228,23 +209,11 @@
                                     </div>
                                 </div>
 
-                                <!-- Tab Text -->
+                                <!-- Tab Text Announcements -->
                                 <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab--2">
                                     <div class="clever-curriculum">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-announcement-modal">Add Announcement</button>
 
-                                        <!-- About Curriculum -->
-        
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-announcement-modal">Add</button>
-                                        <div class="about-curriculum mb-30">
-                                            <button class="btn btn-info">Edit</button><button class="btn btn-danger">Delete</button>
-                                            <h6>Announcement Title</h6>
-                                            <p>Sed elementum lacus a risus luctus suscipit. Aenean sollicitudin sapien neque, in fermentum lorem dignissim a. Nullam eu mattis quam. Donec porttitor nunc a diam molestie blandit. Maecenas quis ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam eget vehicula lorem, vitae porta nisi. Ut vel quam erat. Ut vitae erat tincidunt, tristique mi ac, pharetra dolor. In et suscipit ex. Pellentesque aliquet velit tortor, eget placerat mi scelerisque a. Aliquam eu dui efficitur purus posuere viverra. Proin ut elit mollis, euismod diam et, fermentum enim.</p>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="clever-curriculum">
-
-                                        <!-- About Curriculum -->
                                         <div class="about-curriculum mb-30">
                                             <button class="btn btn-info">Edit</button><button class="btn btn-danger">Delete</button>
                                             <h6>Announcement Title</h6>
@@ -256,145 +225,34 @@
                                 </div>
 
 
-                                <!-- Tab Text -->
+                                <!-- Tab Text Assignments -->
                                 <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab--3">
                                     <div class="clever-curriculum">
 
-                                        <!-- About Curriculum -->
-        
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-assignment-modal">Add</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-assignment-modal">Add Assignment</button>
                                         <div class="about-curriculum mb-30">
                                             <button class="btn btn-info">Edit</button><button class="btn btn-danger">Delete</button>
                                             <h6>Assignment Title</h6>
                                             <p>Nullam eu mattis quam. Donec porttitor nunc a diam molestie blandit. Maecenas quis ultrices ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam eget vehicula lorem, vitae porta nisi. Ut vel quam erat. Ut vitae erat tincidunt, tristique mi ac, pharetra dolor. In et suscipit ex. Pellentesque aliquet velit tortor, eget placerat mi scelerisque a. Aliquam eu dui efficitur purus posuere viverra. Proin ut elit mollis, euismod diam et, fermentum enim.</p>
-                                            
                                         </div>
                                     </div>
-                                    <div class="clever-curriculum">
-
-                                        <!-- About Curriculum -->
-                                        <div class="about-curriculum mb-30">
-                                            <button class="btn btn-info">Edit</button><button class="btn btn-danger">Delete</button>
-                                            <h6>Assignment Title</h6>
-                                            <p>Sed elementum lacus a risus luctus suscipit.</p>
-                                        </div>
-                                    </div>
-                                    
                                 </div>
 
-                                <!-- Tab Text -->
+                                <!-- Tab Text Students List -->
                                 <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab--4">
                                     <div class="clever-members">
                                         <!-- All Members -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-student-modal">Add Students</button>
                                         <div class="all-instructors mb-30">
                                             <div class="row">
                                                 <h6>Students List</h6>
-                                                
                                             </div>
-                                            
-                                            <div class="row">
-                                                <div class="single-instructor d-flex align-items-center mb-30">
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-student-modal">Add</button>
-                                                </div>
-                                            </div>
-
                                             <div class="row">
                                                 <!-- Single Student -->
                                                 <div class="col-lg-6">
                                                     <div class="single-instructor d-flex align-items-center mb-30">
                                                         <div class="instructor-thumb">
                                                             <img src="img/bg-img/t1.png" alt="">
-                                                        </div>
-                                                        <div class="instructor-info">
-                                                            <h5>Student's Name</h5>
-                                                            <a class="text-danger" href="#">Remove</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Student -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-instructor d-flex align-items-center mb-30">
-                                                        <div class="instructor-thumb">
-                                                            <img src="img/bg-img/t2.png" alt="">
-                                                        </div>
-                                                        <div class="instructor-info">
-                                                            <h5>Student's Name</h5>
-                                                            <a class="text-danger" href="#">Remove</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Student -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-instructor d-flex align-items-center mb-30">
-                                                        <div class="instructor-thumb">
-                                                            <img src="img/bg-img/t3.png" alt="">
-                                                        </div>
-                                                        <div class="instructor-info">
-                                                            <h5>Student's Name</h5>
-                                                            <a class="text-danger" href="#">Remove</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Student -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-instructor d-flex align-items-center mb-30">
-                                                        <div class="instructor-thumb">
-                                                            <img src="img/bg-img/t4.png" alt="">
-                                                        </div>
-                                                        <div class="instructor-info">
-                                                            <h5>Student's Name</h5>
-                                                            <a class="text-danger" href="#">Remove</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Student -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-instructor d-flex align-items-center mb-30">
-                                                        <div class="instructor-thumb">
-                                                            <img src="img/bg-img/t1.png" alt="">
-                                                        </div>
-                                                        <div class="instructor-info">
-                                                            <h5>Student's Name</h5>
-                                                            <a class="text-danger" href="#">Remove</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Student -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-instructor d-flex align-items-center mb-30">
-                                                        <div class="instructor-thumb">
-                                                            <img src="img/bg-img/t2.png" alt="">
-                                                        </div>
-                                                        <div class="instructor-info">
-                                                            <h5>Student's Name</h5>
-                                                            <a class="text-danger" href="#">Remove</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Student -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-instructor d-flex align-items-center mb-30">
-                                                        <div class="instructor-thumb">
-                                                            <img src="img/bg-img/t3.png" alt="">
-                                                        </div>
-                                                        <div class="instructor-info">
-                                                            <h5>Student's Name</h5>
-                                                            <a class="text-danger" href="#">Remove</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Single Student -->
-                                                <div class="col-lg-6">
-                                                    <div class="single-instructor d-flex align-items-center mb-30">
-                                                        <div class="instructor-thumb">
-                                                            <img src="img/bg-img/t4.png" alt="">
                                                         </div>
                                                         <div class="instructor-info">
                                                             <h5>Student's Name</h5>
@@ -407,12 +265,12 @@
                                     </div>
                                 </div>
 
-                                <!-- Tab Text -->
+                                <!-- Tab Text Quizzes -->
                                 <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab--5">
                                     <div class="clever-review">
                                         <!-- Quiz -->
                                         <div class="about-review mb-30">
-                                            <h4>Reviews</h4>
+                                            <h4>Quizzes Given</h4>
                                             <p>Sed elementum lacus a risus luctus suscipit. Aenean sollicitudin sapien neque, in fermentum lorem dignissim a. Nullam eu mattis quam. Donec porttitor nunc a diam molestie blandit. Maecenas quis ultrices</p>
                                         </div>
                                     </div>
@@ -440,6 +298,8 @@
                                 </li>
                             </ul>
                         </div>
+
+                        <!-- Add Learning Matrials modal -->
                         <div id="upload-modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -447,31 +307,35 @@
                                         <h4 class="modal-title pull-left">Upload Learnng Material</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="form-group">
-                                            <div class="col-auto">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">Lecture No.</div>
+                                        <form method="POST">
+                                            <div class="form-group">
+                                                <div class="col-auto">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Lecture No.</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="inlineFormInputGroup" name="lecture-number" placeholder="(example: 1)" />
                                                     </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="(example: 1)" />
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">Lecture Topic</div>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Lecture Topic</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="inlineFormInputGroup" name="lecture_topic" />
                                                     </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Lecture Topic" />
                                                 </div>
                                             </div>
-                                        </div>
-                                        <input type="file" />
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-info" data-dismiss="modal">Submit</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <input type="file" name="material_file" />
+                                            <div class="pull-right">
+                                                <button type="button" class="btn btn-info" name="add_material">Add</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Add assignment modal -->
                         <div id="add-assignment-modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -479,37 +343,48 @@
                                         <h4 class="modal-title pull-left">Add Assignment</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="form-group">
-                                            <div class="col-auto">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">Assignment No.</div>
+                                        <form action="POST">
+                                            <div class="form-group">
+                                                <div class="col-auto">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Assignment No.</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="inlineFormInputGroup" name="assignment_number" placeholder="(example: 1)" />
                                                     </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="(example: 1)" />
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">Title</div>
-                                                    </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" />
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">Instruction</div>
-                                                    </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" />
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <div class="form-group">
+                                                <div class="col-auto">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Title</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="inlineFormInputGroup" name="add_assignment_title" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-auto">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Instruction</div>
+                                                        </div>
+                                                        <textarea class="form-control" id="inlineFormInputGroup" name="assignment_instruction"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                <button type="button" class="btn btn-primary" name="add_assignment">Add</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>          
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Add announcement modal -->
                         <div id="add-announcement-modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -517,34 +392,48 @@
                                         <h4 class="modal-title pull-left">Add Announcement</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="form-group">
-                                            <div class="col-auto">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">Title</div>
+                                        <form method="POST">
+                                            <div class="form-group">
+                                                <div class="col-auto">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Announcement No.</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="inlineFormInputGroup" name="announcement_number" />
                                                     </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" />
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">Content</div>
-                                                    </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" />
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    </div>
+                                            <div class="form-group">
+                                                <div class="col-auto">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Title</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="inlineFormInputGroup" name="announcement_title" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-auto">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Content</div>
+                                                        </div>
+                                                        <textarea class="form-control" id="inlineFormInputGroup" name="announcement_content"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                <button type="button" class="btn btn-primary" name="add_announcement">Add</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>  
                                 </div>
                             </div>
                         </div>
 
-                        
-
-                        
+                        <!-- Add student Modal -->
                         <div id="add-student-modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -552,29 +441,57 @@
                                         <h4 class="modal-title pull-left">Add Student</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="form-group">
-                                            <div class="col-auto">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">Search</div>
+                                        <form method="POST">
+                                            <div class="form-group">
+                                                <div class="col-auto">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Search</div>
+                                                        </div>
+                                                        <input type="search" class="form-control" placeholder="Name of Student"/>
                                                     </div>
-                                                    <input type="search" class="form-control" placeholder="Name of Student"/>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            <div class="pull-right">
+                                                <button type="button" class="btn btn-primary" name="add_student">Add</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Update About Modal -->
+                        <div id="update-about-modal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title pull-left">Update About</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST">
+                                            <div class="input-group">
+                                                <textarea class="form-control" name="new_about"><?php echo $row['course_about']?></textarea>
+                                            </div> 
+                                            <br/>  
+                                            <div class="pull-right">
+                                                <button  class="btn btn-primary" name="update_about" >Add</button>
+                                                <button  class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+   
     <!-- ##### Courses Content End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
