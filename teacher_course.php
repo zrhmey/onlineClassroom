@@ -4,17 +4,21 @@ include("db_connection.php");
 
  
 $error = "<br>";
+if(isset($_POST['update_about'])){
+    $new_about = ($_POST['new_about']);
+    $update_query = "UPDATE subject SET course_about = '$new_about' WHERE subject_id = '1'";
+    if ($update_connect = mysqli_query($dbconn, $update_query)) {
+        header("Location: teacher_course.php");
+    }
+
+}
 
 if (isset($_POST['add_announcement'])) {
     $announcement_number = ($_POST['announcement_number']);
     $announcement_title = ($_POST['announcement_title']);
     $announcement_content = ($_POST['announcement_content']);
-    $date_made = CURDATE();
 
-    $add_announcement_query = "INSERT into subject_announcement(subject_id, announcement_number, announcement_title, announcement_date, announcement_content) VALUES('1','$announcement_number', '$announcement_title', '$date_made', '$announcement_content')";
-    if ($add_announcement_connect = mysqli_query($dbconn, $add_announcement_query)) {
-       header("Location: teacher_course.php");
-    }
+    $add_query = "INSERT INTO subject_announcement(subject_id, announcement_number, title, date, content) VALUES('1', '1','$announcement_title', CURDATE(), '$announcement_content')";
 }
 
 
@@ -458,17 +462,7 @@ if (isset($_POST['add_announcement'])) {
                             </div>
                         </div>
 
-                        <!-- Update About -->
-                        <?php
-                            if(isset($_POST['update_about'])){
-                                $new_about = ($_POST['new_about']);
-                                $update_query = "UPDATE subject SET course_about = '$new_about' WHERE subject_id = '1'";
-                                if ($update_connect = mysqli_query($dbconn, $update_query)) {
-                                    header("Location: teacher_course.php");
-                                }
-
-                            }
-                        ?>
+                        <!-- Update About Modal -->
                         <div id="update-about-modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -482,7 +476,7 @@ if (isset($_POST['add_announcement'])) {
                                             </div> 
                                             <br/>  
                                             <div class="pull-right">
-                                                <button  class="btn btn-primary" name="update_about">Update</button>
+                                                <button  class="btn btn-primary" name="update_about" >Add</button>
                                                 <button  class="btn btn-danger" data-dismiss="modal">Cancel</button> 
                                             </div>
                                         </form>

@@ -117,9 +117,7 @@
                                             <div class="meta d-flex align-items-center">
                                                 <h7><b><?php echo $row[2]?></b></h7>
                                             </div>
-                                        </div>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#update-subject-modal">Update</button>
-                                        <button class="btn btn-danger" name="delete_subject">Delete</button>
+                                        </div> 
                                     </form>
                                 </div>
                             </div>
@@ -128,77 +126,6 @@
             </div>
         </div>
     </section>
-
-    
-    <?php 
-        $subject_info_query = "SELECT course_title , course_description FROM subject where subject_id = 1";
-        $query_connect = mysqli_query($dbconn, $subject_info_query);
-        $show = mysqli_fetch_assoc($query_connect);
-
-        $course_title = $show['course_title'];
-        $course_description = $show['course_description'];
-
-
-        //to update (works but needs ajax for real-time update)
-
-        if (isset($_POST['update_subject'])) {
-            $new_title = ($_POST['new_title']);
-            $new_description = ($_POST['new_description']);
-
-            $update_subject_query = "UPDATE subject SET course_title = '$new_title', course_description = '$new_description' WHERE subject_id = '1'";
-            if ($update_connect = mysqli_query($dbconn, $update_subject_query)) {
-            }
-
-        }
-
-        //to delete (works. how everm the subject_id still needs to be passed)
-        if (isset($_POST['delete_subject'])) {
-            $delete_subject_query = "DELETE FROM subject WHERE subject_id = 4";
-            $delete_connect = mysqli_query($dbconn, $delete_subject_query);
-
-        } 
-
-    ?>
-                            
-    <!--update subject modal -->
-    <div id="update-subject-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title pull-left">Update Subject</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="POST">
-                        <div class="form-group">
-                            <div class="col-auto">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">Title</div>
-                                    </div>
-                                    <input type="text" class="form-control" name="new_title" value="<?php echo $course_title ?>">
-                                </div> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-auto">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">Descrition</div>
-                                    </div>
-                                    <input type="text" class="form-control" name="new_description" value="<?php echo $course_description ?>">
-                                </div>  
-                            </div>
-                        </div>
-                        <div class="pull-right">
-                            <button  class="btn btn-primary" name="update_subject" >Update</button>
-                            <button  class="btn btn-danger" data-dismiss="modal">Cancel</button> 
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">

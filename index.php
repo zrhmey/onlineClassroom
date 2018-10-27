@@ -141,6 +141,7 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
+
 </head>
 
 <body>
@@ -198,6 +199,8 @@
         </div>
     </section>
     <!-- ##### Hero Area End ##### -->
+
+    <!-- FORMS -->
     <div id="forms" class="single-course-content section-padding-100" style="background-image: url(img/core-img/texture.png);">
         <div class="container">
             <div class="row">
@@ -213,19 +216,21 @@
                                         <div class="about-course mb-30">
                                             <h4>Create Account</h4>
                                             <h7 class="text-danger"><?php echo $error2 ?></h7>
-                                            <form method="post">
+                                            <form method="post" id="createAccountForm">
                                                 <div class="row">
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="first_name">First Name</label>
                                                             <input type="text" class="form-control" name="first_name" id="first_name">
                                                         </div>
+                                                        <span id="firstnameMsg" name="firstnameMsg">Status Message here</span>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="last_name">Last Name:</label>
                                                             <input type="text" class="form-control" name="last_name" id="last_name">
                                                         </div>
+                                                        <span id="lastnameMsg" name="lastnameMsg">Status Message here</span>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -234,12 +239,14 @@
                                                             <label for="username">Username:</label>
                                                             <input type="text" class="form-control" name="username" id="username">
                                                         </div>
+                                                        <span id="usernameMsg" name="usernameMsg">Status Message here</span>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="email">Email Address:</label>
-                                                            <input type="email" class="form-control" name="email" id="email">
+                                                            <input type="email" class="form-control" name="emailAdd" id="emailAdd">
                                                         </div>
+                                                        <span id="emailMsg" name="emailMsg">Status Message here</span>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -248,18 +255,20 @@
                                                             <label for="pwd">Password:</label>
                                                             <input type="password" class="form-control" name="pwd" id="pwd">
                                                         </div>
+                                                        <span id="pwdMsg" name="pwdMsg">Status Message here</span>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
-                                                            <label for="pwd">Password:</label>
+                                                            <label for="retype_pwd">Confirm Password:</label>
                                                             <input type="password" class="form-control" name="retype_pwd" id="retype_pwd">
                                                         </div>
+                                                        <span id="retype_pwdMsg" name="retype_pwdMsg">Status Message here</span>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row form-group">
                                                     <div class="col-12 col-md-6">
                                                         <label for="user_type">Register As:</label>
-                                                        <select name="type">
+                                                        <select name="type" id="user_type" class="form-control">
                                                             <option value="1">Teacher</option>
                                                             <option value="0">Student</option>
                                                         </select>
@@ -323,6 +332,7 @@
             </div>
         </div>
     </div>
+    <!-- FORMS END -->
     <!-- ##### Register End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
@@ -358,6 +368,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
+    <!-- Form validation -->
+    <script src="js/index.js"></script>
 </body>
 
 </html>
