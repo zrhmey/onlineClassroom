@@ -141,7 +141,6 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
-
 </head>
 
 <body>
@@ -199,8 +198,6 @@
         </div>
     </section>
     <!-- ##### Hero Area End ##### -->
-
-    <!-- FORMS -->
     <div id="forms" class="single-course-content section-padding-100" style="background-image: url(img/core-img/texture.png);">
         <div class="container">
             <div class="row">
@@ -244,7 +241,7 @@
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="email">Email Address:</label>
-                                                            <input type="email" class="form-control" name="emailAdd" id="emailAdd">
+                                                            <input type="email" class="form-control" name="email" id="email">
                                                         </div>
                                                         <span id="emailMsg" name="emailMsg">Status Message here</span>
                                                     </div>
@@ -332,7 +329,6 @@
             </div>
         </div>
     </div>
-    <!-- FORMS END -->
     <!-- ##### Register End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
@@ -368,7 +364,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-
     <!-- Form validation -->
     <script src="js/index.js"></script>
 </body>
