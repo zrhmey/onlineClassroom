@@ -241,7 +241,7 @@
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group">
                                                             <label for="email">Email Address:</label>
-                                                            <input type="email" class="form-control" name="email" id="email">
+                                                            <input type="email" class="form-control" name="emailAdd" id="emailAdd">
                                                         </div>
                                                         <span id="emailMsg" name="emailMsg">Status Message here</span>
                                                     </div>
